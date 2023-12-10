@@ -19,8 +19,11 @@ public class ClienteModel {
     @Column(nullable = false)
     protected String cpf, nome, email, telefone, endereco, senha;
     protected CarrinhoDeComprasModel carrinho;
+    
     @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL, orphanRemoval = true)
     protected ArrayList<CartaoModel> cartoes; 
+    
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     protected ArrayList<PedidoModel> pedidos;
 
     //construtor
