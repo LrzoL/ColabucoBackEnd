@@ -8,7 +8,7 @@ public class CartaoModel {
         private String bancoCartao;
         private String bandeira;
         private int cvv;
-    
+
         //construtor
         public CartaoModel(String nome, String numCartao, String codValidade, String nomeTitular, String bancoCartao, String bandeira, int cvv) {
             this.nome = nome;
