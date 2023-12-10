@@ -8,8 +8,8 @@ public class ArtistaModel extends ClienteModel{
     private String descricao;
     private ArrayList<ProdutoModel> produtos;
 
-    public ArtistaModel(Long id, String nome, String email, String cpf, String telefone, String senha, String endereco, String cnpj, ArrayList<String> categoriaArte, String politicaEntregaFrete, String descricao){
-        super(id, nome, email, cpf, telefone, senha, endereco);
+    public ArtistaModel(String nome, String email, String cpf, String telefone, String senha, String endereco, String cnpj, ArrayList<String> categoriaArte, String politicaEntregaFrete, String descricao){
+        super(nome, email, cpf, telefone, senha, endereco);
         this.cnpj = cnpj;
         categoriaArte = new ArrayList<String>();
         this.politicaEntregaFrete = politicaEntregaFrete;
@@ -18,8 +18,8 @@ public class ArtistaModel extends ClienteModel{
     }
 
     //Sobrecarga de construtor
-    public ArtistaModel(Long id, String nome, String email, String cpf, String telefone, String senha, String endereco, ArrayList<String> categoriaArte, String politicaEntregaFrete, String descricao){
-        super(id, nome, email, cpf, telefone, senha, endereco);
+    public ArtistaModel(String nome, String email, String cpf, String telefone, String senha, String endereco, ArrayList<String> categoriaArte, String politicaEntregaFrete, String descricao){
+        super(nome, email, cpf, telefone, senha, endereco);
         this.cnpj = null;
         categoriaArte = new ArrayList<String>();
         this.politicaEntregaFrete = politicaEntregaFrete;

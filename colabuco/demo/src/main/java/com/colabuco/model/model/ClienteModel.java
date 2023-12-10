@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class ClienteModel {
     protected String cpf, nome, email, telefone, endereco, senha;
     protected CarrinhoDeComprasModel carrinho;
-    protected ArrayList<CartaoModel> cartoes; //1 p/ n -> Cliente p/ cartão [objeto em cliente e arraylist em cartão]
+    protected ArrayList<CartaoModel> cartoes; 
     protected ArrayList<PedidoModel> pedidos;
 
     //construtor
