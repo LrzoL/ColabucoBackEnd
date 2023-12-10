@@ -1,14 +1,31 @@
 package com.colabuco.model.model;
 import java.util.ArrayList;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_cliente_model")
 public class ClienteModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    @Column(nullable = false)
     protected String cpf, nome, email, telefone, endereco, senha;
     protected CarrinhoDeComprasModel carrinho;
+    @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL, orphanRemoval = true)
     protected ArrayList<CartaoModel> cartoes; 
     protected ArrayList<PedidoModel> pedidos;
 
     //construtor
-    public ClienteModel(String nome, String email, String cpf, String telefone, String senha, String endereco) {
+    public ClienteModel(Long id, String nome, String email, String cpf, String telefone, String senha, String endereco) {
+        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
