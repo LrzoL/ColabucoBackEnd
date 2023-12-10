@@ -8,14 +8,19 @@ import jakarta.persistence.*;
 public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_do_cliente")
     protected Long id;
+
     @Column(nullable = false)
     protected String cpf, nome, email, telefone, endereco, senha;
-    @OneToOne
-    @JoinColumn(name = "id_de_carrinho", referencedColumnName  = "id_de_carrinho")
+
+    @OneToOne(mappedBy = "cliente")
     protected CarrinhoDeComprasModel carrinho;
+
     @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL, orphanRemoval = true)
-    protected ArrayList<CartaoModel> cartoes; 
+    protected ArrayList<CartaoModel> cartoes;
+
+    @OneToMany(cascade = CascadeType.ALL)
     protected ArrayList<PedidoModel> pedidos;
 
     //construtor
@@ -92,6 +97,7 @@ public class ClienteModel {
         this.carrinho.limpar();
     }
 
+    /*
     protected void adicionarCartao(String apelido, String numCartao, String validade, String nomeTitular, String instituicaoCartao, String bandeira, int cvv){
         CartaoModel cartao = new CartaoModel(apelido, numCartao, validade, nomeTitular, instituicaoCartao, bandeira, cvv);
         this.cartoes.add(cartao);
@@ -103,6 +109,7 @@ public class ClienteModel {
             }
         }
     }
+    */
 
     protected void finalizarCompra(){
         this.carrinho.fazerPedido(endereco);

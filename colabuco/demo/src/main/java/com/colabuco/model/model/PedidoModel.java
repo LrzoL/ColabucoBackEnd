@@ -17,10 +17,20 @@ public class PedidoModel {
         @JoinColumn(name = "id_pagamento", referencedColumnName = "id_pagamento")
         private PagamentoModel pagamento;
 
+        @ManyToOne
+        @JoinColumn(name="id_do_cliente", referencedColumnName = "id_do_cliente")
+        private ClienteModel cliente;
+
         private String cpfCliente;
         private String cnpjArtista;
+
+        @Column(name = "endereço de entrega")
         private String endereco;
+
+        @Column(name = "frete")
         private String opcoesEntrega;
+
+        @Column(name = "valor")
         private double valor;
     
         public PedidoModel(String id, String cpfCliente, String endereco, double valor){

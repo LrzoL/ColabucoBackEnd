@@ -15,11 +15,15 @@ public class CarrinhoDeComprasModel {
 
     @OneToOne(mappedBy = "carrinho")
     private PedidoModel pedido;
+
+    @Column(name = "valor")
     private double valor;
     private ArrayList<ProdutoModel> produtos;
+
     private String cpfCliente;
 
-    @OneToOne(mappedBy = "carrinho")
+    @OneToOne
+    @JoinColumn(name = "id_do_cliente")
     private ClienteModel cliente;
 
     //construtor
