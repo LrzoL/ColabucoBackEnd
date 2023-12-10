@@ -1,14 +1,7 @@
 package com.colabuco.model.model;
 import java.util.ArrayList;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_cliente_model")
@@ -18,6 +11,8 @@ public class ClienteModel {
     protected Long id;
     @Column(nullable = false)
     protected String cpf, nome, email, telefone, endereco, senha;
+    @OneToOne
+    @JoinColumn(name = "id_de_carrinho", referencedColumnName  = "id_de_carrinho")
     protected CarrinhoDeComprasModel carrinho;
     @OneToMany(mappedBy = "cartao", cascade = CascadeType.ALL, orphanRemoval = true)
     protected ArrayList<CartaoModel> cartoes; 

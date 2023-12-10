@@ -1,7 +1,16 @@
 package com.colabuco.model.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "pagamento")
 public class PagamentoModel {
+        @Id
+        @Column(name = "id_pagamento")
         private String id;
+        @OneToOne(mappedBy = "pagamento")
+        private PedidoModel pedido;
+
         private String formaPagamento;
         private int idTransacao;
     

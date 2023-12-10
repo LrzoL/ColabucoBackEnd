@@ -1,14 +1,25 @@
 package com.colabuco.model.model;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
+@Entity
+@Table(name = "carrinho_de_compra")
 public class CarrinhoDeComprasModel {
     Random random = new Random();
+
+    @Id
+    @Column(name = "id_de_carrinho")
     private String id;
+
+    @OneToOne(mappedBy = "carrinho")
+    private PedidoModel pedido;
     private double valor;
     private ArrayList<ProdutoModel> produtos;
     private String cpfCliente;
-    private PedidoModel pedido;
+
+    @OneToOne(mappedBy = "carrinho")
     private ClienteModel cliente;
 
     //construtor

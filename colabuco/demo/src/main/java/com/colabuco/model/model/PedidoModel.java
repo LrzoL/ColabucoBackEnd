@@ -1,7 +1,22 @@
 package com.colabuco.model.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="pedidos")
 public class PedidoModel {
+        @Id
+        @Column(name = "id_pedido")
         private String id;
+
+        @OneToOne
+        @JoinColumn(name = "id_de_carrinho", referencedColumnName  = "id_de_carrinho")
+        private CarrinhoDeComprasModel carrinho;
+
+        @OneToOne
+        @JoinColumn(name = "id_pagamento", referencedColumnName = "id_pagamento")
+        private PagamentoModel pagamento;
+
         private String cpfCliente;
         private String cnpjArtista;
         private String endereco;
