@@ -1,34 +1,36 @@
 package com.colabuco.model.model;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_pedido_model")
+@Table(name="pedidos")
 public class PedidoModel {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pedido")
         private String id;
-        @Column(nullable = false)
-        private String cpfCliente;
-        @Column(nullable = false)
-        private String cnpjArtista;
-        @Column(nullable = false)
-        private String endereco;
-        @Column(nullable = false)
-        private String opcoesEntrega;
-        @Column(nullable = false)
-        private double valor;
+
+        @OneToOne
+        @JoinColumn(name = "id_de_carrinho", referencedColumnName  = "id_de_carrinho")
+        private CarrinhoDeComprasModel carrinho;
+
+        @OneToOne
+        @JoinColumn(name = "id_pagamento", referencedColumnName = "id_pagamento")
+        private PagamentoModel pagamento;
 
         @ManyToOne
-        @JoinColumn(name = "id_cliente_model", referencedColumnName = "id")
-        private ClienteModel c1;
+        @JoinColumn(name="id_do_cliente", referencedColumnName = "id_do_cliente")
+        private ClienteModel cliente;
+
+        private String cpfCliente;
+        private String cnpjArtista;
+
+        @Column(name = "endereço de entrega")
+        private String endereco;
+
+        @Column(name = "frete")
+        private String opcoesEntrega;
+
+        @Column(name = "valor")
+        private double valor;
     
         public PedidoModel(String id, String cpfCliente, String endereco, double valor){
             this.id = id;
