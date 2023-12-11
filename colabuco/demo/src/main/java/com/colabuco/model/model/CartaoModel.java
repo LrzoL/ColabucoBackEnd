@@ -1,10 +1,14 @@
 package com.colabuco.model.model;
 
+import java.util.ArrayList;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,6 +34,9 @@ public class CartaoModel {
         @JoinColumn(name = "id_cliente_model", referencedColumnName = "id")
         private ClienteModel c;
     
+        @OneToMany(mappedBy = "pagamento", cascade = CascadeType.ALL, orphanRemoval = true)
+        private ArrayList<PagamentoModel> pagamentos; 
+
         //construtor
         public CartaoModel(String nome, String numCartao, String codValidade, String nomeTitular, String bancoCartao, String bandeira, int cvv) {
             this.nome = nome;
