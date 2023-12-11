@@ -1,4 +1,7 @@
 package com.colabuco.model.model;
+
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -30,6 +33,8 @@ public class CarrinhoDeComprasModel {
     @Column(nullable = false)
     private PedidoModel pedido;
     @Column(nullable = false)
+    @OneToOne
+    @JoinColumn(name = "id_do_cliente")
     private ClienteModel cliente;
 
     //construtor

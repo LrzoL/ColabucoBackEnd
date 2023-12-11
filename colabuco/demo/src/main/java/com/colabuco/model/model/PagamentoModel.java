@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -15,8 +16,11 @@ import jakarta.persistence.Table;
 public class PagamentoModel {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pagamento")
         private String id;
         @Column(nullable = false)
+        @OneToOne(mappedBy = "pagamento")
+        private PedidoModel pedido;
         private String formaPagamento;
         @Column(nullable = false)
         private int idTransacao;
