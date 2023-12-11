@@ -1,5 +1,4 @@
 package com.colabuco.model.model;
-
 import jakarta.persistence.*;
 
 @Entity

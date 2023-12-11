@@ -1,6 +1,5 @@
 package com.colabuco.model.model;
 import java.util.ArrayList;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -41,28 +40,36 @@ public class ClienteModel {
     public String getCpf() {
         return cpf;
     }
+
     public String getNome() {
         return nome;
     }
+
     public String getEmail() {
         return email;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public String getEndereco() {
         return endereco;
     }
+
     public String getSenha() {
         return senha;
     }
+
     public CarrinhoDeComprasModel getCarrinho() {
         return carrinho;
     }
+
     public ArrayList<CartaoModel> getCartoes() {
         return cartoes;
     }
-    public ArrayList<PedidoModel> getPedidos(){
+
+    public ArrayList<PedidoModel> getPedidos() {
         return pedidos;
     }
 
@@ -70,52 +77,52 @@ public class ClienteModel {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
     //métodos
-    protected void adicionarAoCarrinho(ProdutoModel produto){
+    protected void adicionarAoCarrinho(ProdutoModel produto) {
         this.carrinho.adicionarProduto(produto);
     }
-    protected void removerDoCarrinho(String idProduto){
+
+    protected void removerDoCarrinho(String idProduto) {
         this.carrinho.removerProduto(idProduto);
     }
-    protected void limparCarrinho(){
+
+    protected void limparCarrinho() {
         this.carrinho.limpar();
     }
 
-    /*
-    protected void adicionarCartao(String apelido, String numCartao, String validade, String nomeTitular, String instituicaoCartao, String bandeira, int cvv){
+
+    protected void adicionarCartao(String apelido, String numCartao, String validade, String nomeTitular, String instituicaoCartao, String bandeira, int cvv) {
         CartaoModel cartao = new CartaoModel(apelido, numCartao, validade, nomeTitular, instituicaoCartao, bandeira, cvv);
         this.cartoes.add(cartao);
     }
-    protected void removerCartao(String numCartao){
-        for (int i = 0; i < this.cartoes.size(); i++){
-            if (this.cartoes.get(i).getNumCartao() == numCartao){
+
+    protected void removerCartao(String numCartao) {
+        for (int i = 0; i < this.cartoes.size(); i++) {
+            if (this.cartoes.get(i).getNumCartao() == numCartao) {
                 this.cartoes.remove(this.cartoes.get(i));
             }
         }
     }
-    */
-
-    protected void finalizarCompra(){
-        this.carrinho.fazerPedido(endereco);
-    }
-
-    public void registrarPedido(PedidoModel pedido){
-        this.pedidos.add(pedido);
-    }
 }
+
