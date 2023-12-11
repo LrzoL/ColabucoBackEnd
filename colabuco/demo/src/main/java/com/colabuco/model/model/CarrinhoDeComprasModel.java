@@ -14,18 +14,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_carrinho_de_compra_model")
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-
-@Entity
-@Table(name = "tb_carrinho_de_compra_model")
 public class CarrinhoDeComprasModel {
     Random random = new Random();
     @Id
@@ -34,17 +22,13 @@ public class CarrinhoDeComprasModel {
     @Column(nullable = false)
     private double valor;
 
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
-
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+   @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<ProdutoModel> produtos;
     
     @Column(nullable = false)
     private String cpfCliente;
     @Column(nullable = false)
-    @Column(nullable = false)
     private PedidoModel pedido;
-    @Column(nullable = false)
     @Column(nullable = false)
     private ClienteModel cliente;
 
